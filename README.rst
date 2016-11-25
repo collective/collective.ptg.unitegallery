@@ -16,6 +16,17 @@ Examples
 http://unitegallery.net/
 
 
+TODO
+----
+
+Currently We've added some of the unitegallery options, but maybe all the options shoud be added even if the formuar becomes very long.
+The options can be found on unitegallery.net, for each theme under Including and Options menu.
+
+There shoud be a way to make better formulars with grouped fields because when there are so many fields, it becomes userunfriendly.
+
+Plone 4 compatibility (as in Plone 5, requirejs is used to add unitegallery javascript and not in Plone 4)
+
+
 Documentation
 -------------
 
