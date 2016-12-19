@@ -1,5 +1,9 @@
 Changelog
 =========
+1.0a3
+-----
+- Use collective.js.unitegallery
+- added off('touchstart') to fix scroll on mobile devices (needs furher investigations)
 
 1.0a2
 ------------------

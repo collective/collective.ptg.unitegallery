@@ -12,6 +12,30 @@
         directory="resources"
         />
 
+  <includeDependencies package="." />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="collective.ptg.unitegallery"
+      directory="profiles/default"
+      description="Installs the collective.ptg.unitegallery add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="collective.ptg.unitegallery (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstalls the collective.ptg.unitegallery add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="collective.ptg.unitegallery-hiddenprofiles" />
+      
     <!-- Default Theme -->
     <adapter
         for="collective.plonetruegallery.interfaces.IGallery"

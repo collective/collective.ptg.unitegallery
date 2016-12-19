@@ -53,8 +53,9 @@ class UniteGalleryCommon(BaseDisplayType):
     def galleryscript(self):
         return u"""
             $(document).ready(function() {
-                $("#gallery").each(function(){
-                        $(this).unitegallery({
+                $("#gallery").each(function(){\r
+                        // hack to fix scoll not working on mobile devices!noqa!\r
+                        $(this).off('touchstart').unitegallery({
 			            %(gallery_theme)s
 			            %(gallery_autoplay)s
 			            %(gallery_play_interval)s
@@ -74,12 +75,8 @@ class UniteGalleryCommon(BaseDisplayType):
     def javascript(self):
         if getFSVersionTuple()[0] < 5:
             return u"""
-<script type="text/javascript" src="%(base_url)s/js/unitegallery.min.js"></script>
-<script type="text/javascript" src="%(theme_js_url)s"></script>
 <script type="text/javascript">
-        (function($){
-            %(galleryscript)s
-        })(jQuery);
+    %(galleryscript)s
 </script>
     """ % {
             'start_index_index': self.start_image_index,
@@ -91,12 +88,8 @@ class UniteGalleryCommon(BaseDisplayType):
         else:
             return u"""
 <script type="text/javascript">
-requirejs(["%(base_url)s/js/unitegallery.min.js"], function(util) {
-    requirejs(["%(theme_js_url)s"], function(util) {
-        (function($){
-            %(galleryscript)s
-        })(jQuery);
-    });
+requirejs(["unitegallery-%(theme)s"], function(util) {
+    %(galleryscript)s
 });
 </script>
     """ % {
@@ -104,6 +97,7 @@ requirejs(["%(base_url)s/js/unitegallery.min.js"], function(util) {
             'staticFiles':  self.staticFiles,
             'base_url': self.typeStaticFiles,
             'theme_js_url':self.theme_js_url(),
+            'theme':self.theme,
             'galleryscript':self.galleryscript()
         }
 
@@ -131,6 +125,7 @@ requirejs(["%(base_url)s/js/unitegallery.min.js"], function(util) {
 <link rel="stylesheet" type="text/css"
     href="%(base_url)s/css/unite-gallery.css" media="screen" />
 %(theme_css)s
+%(skin_css)s
 """ % {
         'staticFiles': self.staticFiles,
         'base_url': self.typeStaticFiles,
