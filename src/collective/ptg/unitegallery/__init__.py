@@ -54,14 +54,15 @@ class UniteGalleryCommon(BaseDisplayType):
         return u"""
             $(document).ready(function() {
                 $("#gallery").each(function(){\r
-                        // hack to fix scoll not working on mobile devices!noqa!\r
-                        $(this).off('touchstart').unitegallery({
+                    // hack to fix scoll not working on mobile devices!noqa!\r
+                    $(this).unitegallery({
 			            %(gallery_theme)s
 			            %(gallery_autoplay)s
 			            %(gallery_play_interval)s
 			            %(slider_transition_speed)s
 			            %(theme_options)s
 			        });
+			        $(this).off('touchstart');
 			    });
             });
             """ % {

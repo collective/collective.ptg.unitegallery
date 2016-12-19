@@ -1,5 +1,9 @@
 Changelog
 =========
+1.0a4
+-----
+- changed position of off('touchstart') after gallery initialisation
+
 1.0a3
 -----
 - Use collective.js.unitegallery
