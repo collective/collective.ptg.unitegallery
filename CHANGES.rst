@@ -1,5 +1,9 @@
 Changelog
 =========
+1.0a5
+-----
+- Fix wrong None.css link when skin is not set.
+
 1.0a4
 -----
 - changed position of off('touchstart') after gallery initialisation

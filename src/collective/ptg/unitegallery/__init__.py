@@ -40,7 +40,7 @@ class UniteGalleryCommon(BaseDisplayType):
         
     def skin_css(self):
         skin = self.settings.gallery_skin
-        if skin == 'default':
+        if not skin or skin == 'default':
             return ''
         return """
 <link rel="stylesheet" type="text/css"
@@ -53,15 +53,15 @@ class UniteGalleryCommon(BaseDisplayType):
     def galleryscript(self):
         return u"""
             $(document).ready(function() {
-                $("#gallery").each(function(){\r
-                    // hack to fix scoll not working on mobile devices!noqa!\r
+                $("#gallery").each(function(){
                     $(this).unitegallery({
 			            %(gallery_theme)s
 			            %(gallery_autoplay)s
 			            %(gallery_play_interval)s
 			            %(slider_transition_speed)s
 			            %(theme_options)s
-			        });
+			        });\r
+                    // hack to fix scoll not working on mobile devices!noqa!\r
 			        $(this).off('touchstart');
 			    });
             });
